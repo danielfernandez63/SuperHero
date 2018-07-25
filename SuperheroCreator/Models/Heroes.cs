@@ -9,16 +9,22 @@ namespace SuperheroCreator.Models
     public class Heroes
     {
 
-        
+
         //add a different bootstrap theme
         //add image as home
 
         [Key]
-        public int ID;
+        public int ID { get; set; }
     
         public string Name { get; set; }
 
+
+
+        [Display(Name="Alter Ego")]
         public string AlterEgo { get; set; }
+
+
+
 
         public string PrimaryAbility { get; set; }
 

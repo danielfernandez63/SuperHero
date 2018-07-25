@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using SuperheroCreator.Models;
 
 namespace SuperheroCreator.Controllers
@@ -11,14 +12,12 @@ namespace SuperheroCreator.Controllers
     {
         ApplicationDbContext context = new ApplicationDbContext();
 
-       //get view for main homepage
         public ActionResult Index()
         {
+            // string currentUserId = User.Identity.GetUserId();
+            ViewBag.BackgroundImage = "https://images3.alphacoders.com/212/212607.jpg";
             return View(context.Heroes);
-
         }
-
-        //get views for CRUD
 
         public ActionResult Create()
         {
@@ -37,23 +36,13 @@ namespace SuperheroCreator.Controllers
             return View(hero);
         }
 
-        public ActionResult Details(int ID) //should show 1 hero in DB with all properties of model 
+        public ActionResult Details(int ID)
         {
             var hero = context.Heroes.Where(h => h.ID == ID).FirstOrDefault();
             return View(hero);
         }
 
-
-        public ActionResult Details() //should show all heroes in DB with all properties of model
-        {
-            ViewBag.Hero = new SelectList(context.Heroes, "Name", "AlterEgo", "PrimaryAbility", "SecondaryAbility", "CatchPhrase");
-            return View();
-        }
-
-        //need to do the posting of the actions now that views have been returned
-
         [HttpPost]
-
         public ActionResult Create([Bind(Include = "Name,AlterEgo,PrimaryAbility,SecondaryAbility,Catchphrase")]Heroes Hero)
         {
             context.Heroes.Add(Hero);
@@ -62,7 +51,6 @@ namespace SuperheroCreator.Controllers
         }
 
         [HttpPost]
-
         public ActionResult Edit([Bind(Include = "ID,Name,AlterEgo,PrimaryAbility,SecondaryAbility,Catchphrase")]Heroes Hero)
         {
             var OGHero= context.Heroes.Where(h => h.ID == Hero.ID).FirstOrDefault();
@@ -75,13 +63,15 @@ namespace SuperheroCreator.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost,ActionName("Delete")]
         public ActionResult DeleteDBSide(int ID)
         {
-            var hero = context.Heroes.Where(h => h.ID == ID).FirstOrDefault();
+            var hero = context.Heroes.Find(ID);
             context.Heroes.Remove(hero);
+            context.SaveChanges();
             return RedirectToAction("Index");
-
         }
-
     }
 }
+
+

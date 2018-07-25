@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201807241615517_InitialMigration.Designer.cs">
       <DependentUpon>201807241615517_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807251247541_2ndmigrationwithkeyadded.cs" />
+    <Compile Include="Migrations\201807251247541_2ndmigrationwithkeyadded.Designer.cs">
+      <DependentUpon>201807251247541_2ndmigrationwithkeyadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Heroes.cs" />
@@ -218,10 +222,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapLUX.css" />
+    <Content Include="Content\bootstrapSuperHeroTheme.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Hulk.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -276,6 +283,7 @@
     <Content Include="Views\Hero\Delete.cshtml" />
     <Content Include="Views\Hero\Details.cshtml" />
     <Content Include="Views\Hero\Edit.cshtml" />
+    <Content Include="Views\Hero\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,6 +304,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807241615517_InitialMigration.resx">
       <DependentUpon>201807241615517_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807251247541_2ndmigrationwithkeyadded.resx">
+      <DependentUpon>201807251247541_2ndmigrationwithkeyadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
