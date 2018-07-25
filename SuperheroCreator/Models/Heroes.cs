@@ -9,13 +9,13 @@ namespace SuperheroCreator.Models
     public class Heroes
     {
 
-        //view list of all superheroes
-        //CRUD  superhero 
+        
         //add a different bootstrap theme
         //add image as home
 
         [Key]
-
+        public int ID;
+    
         public string Name { get; set; }
 
         public string AlterEgo { get; set; }
